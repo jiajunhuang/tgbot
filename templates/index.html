@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>精彩网络资料收集分享</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79619009-4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-79619009-4');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6941340661228088",
+                enable_page_level_ads: true
+            });
+        </script>
+    </head>
+    <body style="word-wrap:break-word">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>精彩网络资料收集分享</h2>
+                        大家请安静，我讲几点（校长发言既视感）：
+                    <li>这个页面丑是丑了点</li>
+                    <li>本页面所有内容是由<a href="https://jiajunhuang.com">@jiajunhuang</a>平时接触到的认为值得分享的资源（包括但不限于文章，视频，开源项目等）组成。主要工作原理是阅读然后分享到自定义的Telegram Bot，然后由Bot整理，并且用一个简单地server来serve这个页面（具体可以参考<a href="https://jiajunhuang.com/articles/2018_09_02-write_a_tgbot.md.html">这里</a>）。</li>
+                    <li>诚挚的邀请你一起分享，因为高质量的分享可以让读者（包括我们自己）变得更好，如果你有意愿一起构建这个页面，欢迎 <a href="https://jiajunhuang.com/aboutme">联系我</a></li>
+                    <li>
+                    <a role="button" class="btn btn-primary" href="https://t.me/jiajunhuangcom">点我订阅Telegram Channel自动获取最新分享</a>
+                    </li>
+                    {% if urls|length > 0 %}
+                    <li>最近一次分享更新的时间：{{ urls[0].created_at }}</li>
+                    {% endif %}
+                    </ul>
+
+                    <hr />
+
+                    {% if jump %}
+                    <h3 style="color:red">将在5秒后跳转到 {{ jump }}</h3>
+                    <hr />
+                    {% endif %}
+
+                    <ul>
+                        {% for url in urls %}
+                        <li>
+                            <a href="{{ url.url }}">{{ url.url }}</a>: {% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    {% if jump %}
+                    <script>
+                        window.onload = function() {
+                            window.setTimeout(
+                                function() {
+                                    window.location = "{{ jump }}";
+                                },
+                                5000
+                            )
+                        };
+                    </script>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

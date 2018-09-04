@@ -1,0 +1,29 @@
+- hosts: linode
+  remote_user: root
+  tasks:
+    - name: sync code
+      synchronize:
+        src: ./
+        dest: /data/tgbot/code/
+        recursive: yes
+        delete: yes
+        rsync_opts:
+          - "--chown=www-data"
+
+    - name: remove git info
+      file:
+        path: /data/tgbot/code/.git
+        state: absent
+
+    - name: pip install -r requirements.txt
+      shell: /data/tgbot/env/bin/pip install -r requirements.txt
+      args:
+        chdir: /data/tgbot/code/
+
+    - name: alembic upgrade head
+      shell: /data/tgbot/env/bin/alembic upgrade head
+      args:
+        chdir: /data/tgbot/code/
+
+    - name: reload tgbot process
+      shell: supervisorctl update && supervisorctl restart tgbot:*

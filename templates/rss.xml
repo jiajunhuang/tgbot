@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>精彩内容分享</title>
+        <link>https://share.jiajunhuang.com</link>
+        <description>由 https://jiajunhuang.com 博主整理的高质量的IT学习资料</description>
+        {% for url in urls %}
+        <item>
+            <title>{{ url.comment }}</title>
+            <link>https://share.jiajunhuang.com/?jump={{ url.url }}</link>
+            <description>{{ url.comment }}</description>
+        </item>
+        {% endfor %}
+    </channel>
+
+</rss>
