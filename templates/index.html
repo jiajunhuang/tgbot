@@ -63,20 +63,18 @@
           </p>
           {% for url in urls %}
             <div class="panel-block">
-            <div class="columns">
-            <div class="column is-4">
-                <div class=".sub-title">
-                  <span class="icon has-text-primary">
-                    <i class="fas fa-link"></i>
-                  </span>
-                  <a href="{{ url.url }}">{{ url.url }}</a>
-                </div>
-            </div>
-              <br>
-            <div class="column is-8">
-                <div class="tile">{% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}</div>
-            </div>
-            </div>
+              <div class="tile is-4">
+                  <div class=".sub-title">
+                    <span class="icon has-text-primary">
+                      <i class="fas fa-link"></i>
+                    </span>
+                    <a href="{{ url.url }}">{{ url.url }}</a>
+                  </div>
+              </div>
+                <br>
+              <div class="tile is-8">
+                  <div class="tile">{% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}</div>
+              </div>
             </div>
           {% endfor %}
         </nav>
