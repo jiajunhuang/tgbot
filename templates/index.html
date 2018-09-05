@@ -22,6 +22,14 @@
                 enable_page_level_ads: true
             });
         </script>
+      <style>
+        a {
+          word-break: break-all;
+        }
+        .url-columns {
+          width: 100%;
+        }
+      </style>
     </head>
     <body>
       <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -61,22 +69,23 @@
           <p class="panel-heading">
             更新于：{{ urls[0].created_at }}
           </p>
-          {% for url in urls %}
-            <div class="panel-block">
-              <div class="tile is-4">
-                  <div class=".sub-title">
-                    <span class="icon has-text-primary">
+        {% for url in urls %}
+          <div class="panel-block">
+            <div class="columns url-columns">
+                <div class="column is-4">
+                  <a href="{{ url.url }}">
+                    <span class="has-text-primary">
                       <i class="fas fa-link"></i>
-                    </span>
-                    <a href="{{ url.url }}">{{ url.url }}</a>
-                  </div>
-              </div>
-                <br>
-              <div class="tile is-8">
-                  <div class="tile">{% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}</div>
-              </div>
+                  </span>
+                    {{ url.url }}
+                  </a>
+                </div>
+                <div class="column is-8">
+                  {% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}
+                </div>
             </div>
-          {% endfor %}
+          </div>
+        {% endfor %}
         </nav>
             {% if jump %}
             <script>
