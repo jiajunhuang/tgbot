@@ -59,7 +59,7 @@ def comment_handler(bot, update, args):
     if len(args) == 0:
         text = "Usage: /comment <your comments>"
     else:
-        text = save_comment("".join(args))
+        text = save_comment(" ".join(args))
         bot.send_message(chat_id="@jiajunhuangcom", text=text)  # send to channel, too
 
     bot.send_message(chat_id=update.message.chat_id, text=text)
