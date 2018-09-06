@@ -38,7 +38,7 @@ def save_comment(comment):
         if share:
             share.comment = comment
             s.add(share)
-            return comment + ": " + share.url
+            return comment + ": https://share.jiajunhuang.com?jump=" + share.url
 
         return "not found"
 
