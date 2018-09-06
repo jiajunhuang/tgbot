@@ -67,7 +67,7 @@
         </div>
         <div class="container">
             {% if jump %}
-            <h3 style="color:red">将在5秒后跳转到 {{ jump }}</h3>
+            <h3 style="color:red">将在3秒后跳转到 {{ jump }}</h3>
             <hr />
             {% endif %}
         <nav class="panel">
@@ -99,7 +99,7 @@
                         function() {
                             window.location = "{{ jump }}";
                         },
-                        5000
+                        3000
                     )
                 };
             </script>
