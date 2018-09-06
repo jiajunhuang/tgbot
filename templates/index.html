@@ -24,8 +24,13 @@
         </script>
       <style>
         a {
-          word-break: break-all;
+          word-break: break-word;
         }
+
+        .comment {
+          word-break: break-word;
+        }
+
         .url-columns {
           width: 100%;
         }
@@ -80,7 +85,7 @@
                     {{ url.url }}
                   </a>
                 </div>
-                <div class="column is-8">
+                <div class="column is-8 comment">
                   {% if url.comment %}{{ url.comment }}{% else %}暂无评论{% endif %}
                 </div>
             </div>
