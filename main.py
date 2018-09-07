@@ -4,8 +4,6 @@ gevent.monkey.patch_all()  # noqa
 import logging
 logging.basicConfig(level=logging.INFO)  # noqa
 
-import datetime
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telegram import MessageEntity
 
@@ -68,21 +66,6 @@ def comment_handler(bot, update, args):
 
 
 @report_error
-def list_handler(bot, update):
-    today = datetime.datetime.now()
-    last_week = today - datetime.timedelta(weeks=1)
-
-    with get_session() as s:
-        urls_last_week = s.query(URLShare).filter(URLShare.created_at >= last_week).order_by(URLShare.id.desc()).all()
-
-        text = "\n".join(
-            ["{}: https://share.jiajunhuang.com?jump={}".format(i.comment, i.url) for i in urls_last_week]
-        )
-
-        bot.send_message(chat_id=update.message.chat_id, text=text)
-
-
-@report_error
 def update_comment_handler(bot, update, args):
     if len(args) == 0:
         text = "Usage: /update <id> <new comments>"
@@ -103,11 +86,6 @@ if __name__ == "__main__":
     dispatcher.add_handler(
         CommandHandler(
             'comment', comment_handler, pass_args=True, filters=AUTHORS_FILTER,
-        )
-    )
-    dispatcher.add_handler(
-        CommandHandler(
-            'list', list_handler, filters=AUTHORS_FILTER,
         )
     )
     dispatcher.add_handler(
