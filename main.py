@@ -4,8 +4,6 @@ gevent.monkey.patch_all()  # noqa
 import logging
 logging.basicConfig(level=logging.INFO)  # noqa
 
-import base64
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telegram import MessageEntity
 
@@ -40,7 +38,7 @@ def save_comment(comment):
         if share:
             share.comment = comment
             s.add(share)
-            return comment + ": https://share.jiajunhuang.com?jump=" + str(base64.urlsafe_b64encode(share.url))
+            return comment + ": https://share.jiajunhuang.com?jump=" + share.url
 
         return "not found"
 

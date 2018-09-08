@@ -1,8 +1,6 @@
 import gevent.monkey
 gevent.monkey.patch_all()  # noqa
 
-import base64
-
 from flask import Flask, render_template, make_response, request, send_from_directory
 
 from models import get_session, URLShare
@@ -18,9 +16,6 @@ def favicon():
 @app.route("/")
 def index():
     jump = request.args.get("jump")
-    if not jump.startswith("https"):
-        jump = str(base64.urlsafe_b64decode(jump))
-
     with get_session() as s:
         urls = s.query(URLShare).order_by(URLShare.id.desc()).all()
 
