@@ -19,7 +19,7 @@ def favicon():
 def index():
     jump = request.args.get("jump")
     if not jump.startswith("https"):
-        jump = str(base64.urlsafe_b64decode(jump))
+        jump = str(base64.urlsafe_b64decode(bytes(jump)))
 
     with get_session() as s:
         urls = s.query(URLShare).order_by(URLShare.id.desc()).all()
