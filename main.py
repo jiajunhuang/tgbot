@@ -58,11 +58,10 @@ def update_comment(share_id, comment):
 def comment_handler(bot, update, args):
     if len(args) == 0:
         text = "Usage: /comment <your comments>"
+        bot.send_message(chat_id=update.message.chat_id, text=text)
     else:
         text = save_comment(" ".join(args))
-        bot.send_message(chat_id="@jiajunhuangcom", text=text)  # send to channel, too
-
-    bot.send_message(chat_id=update.message.chat_id, text=text)
+        bot.send_message(chat_id="@jiajunhuangcom", text=text)  # send to channel
 
 
 @report_error
