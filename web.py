@@ -1,7 +1,7 @@
 import gevent.monkey
 gevent.monkey.patch_all()  # noqa
 
-from flask import Flask, render_template, make_response, request, send_from_directory
+from flask import Flask, render_template, make_response, request, send_from_directory, jsonify
 
 from models import get_session, URLShare
 
@@ -31,6 +31,13 @@ def rss():
         response.headers['Content-Type'] = 'application/xml'
 
         return response
+
+
+@app.route("/all")
+def get_all():
+    with get_session() as s:
+        urls = s.query(URLShare).order_by(URLShare.id.desc()).all()
+        return jsonify({"urls": urls})
 
 
 if __name__ == "__main__":
