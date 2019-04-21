@@ -4,3 +4,4 @@ python-telegram-bot==11.0.0
 SQLAlchemy==1.2.10
 gunicorn==19.9.0
 flask==1.0.2
+psycopg2-binary==2.7.7
