@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>精彩网络资料收集分享</title>
+        <title>网络资料收藏</title>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
         <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
@@ -41,7 +41,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="https://share.jiajunhuang.com/">
-              <h2 class="title is-3">精彩网络资料收集分享</h2>
+              <h2 class="title is-3">网络资料收藏</h2>
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -55,10 +55,9 @@
       <div class="container">
         <div class="content">
         <blockquote>
-            大家请安静，我讲几点（校长发言既视感）：
-            <li>这个页面丑是丑了点</li>
-            <li>本页面所有内容是由<a href="https://jiajunhuang.com">@jiajunhuang</a>平时接触到的认为值得分享的资源（包括但不限于文章，视频，开源项目等）组成。主要工作原理是阅读然后分享到自定义的Telegram Bot，然后由Bot整理，并且用一个简单地server来serve这个页面（具体可以参考<a href="https://jiajunhuang.com/articles/2018_09_02-write_a_tgbot.md.html">这里</a>）。</li>
-            <li>诚挚的邀请你一起分享，因为高质量的分享可以让读者（包括我们自己）变得更好，如果你有意愿一起构建这个页面，欢迎 <a href="https://jiajunhuang.com/aboutme">联系我</a></li>
+            <li>
+                本页面所有内容是由<a href="https://jiajunhuang.com">@jiajunhuang</a>和网友们一起整理的值得收藏的资源主要工作原理可以参考<a href="https://jiajunhuang.com/articles/2018_09_02-write_a_tgbot.md.html">这里</a>）。
+            </li>
             <li>
             <a role="button" class="btn btn-primary" href="https://t.me/jiajunhuangcom">点我订阅Telegram Channel自动获取最新分享</a>
             </li>
@@ -71,9 +70,7 @@
             <hr />
             {% endif %}
         <nav class="panel">
-          <p class="panel-heading">
-            更新于：{{ urls[0].created_at }}
-          </p>
+          <p class="panel-heading">更新于：{{ urls[0].created_at }}</p>
         {% for url in urls %}
           <div class="panel-block">
             <div class="columns url-columns">
