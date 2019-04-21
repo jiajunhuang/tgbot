@@ -1,4 +1,4 @@
-- hosts: linode
+- hosts: alilihk
   remote_user: root
   tasks:
     - name: sync code
@@ -17,11 +17,6 @@
 
     - name: pip install -r requirements.txt
       shell: /data/tgbot/env/bin/pip install -r requirements.txt
-      args:
-        chdir: /data/tgbot/code/
-
-    - name: alembic upgrade head
-      shell: /data/tgbot/env/bin/alembic upgrade head
       args:
         chdir: /data/tgbot/code/
 
