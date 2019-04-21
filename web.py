@@ -36,7 +36,10 @@ def rss():
 @app.route("/all")
 def get_all():
     with get_session() as s:
-        urls = s.query(URLShare).order_by(URLShare.id.desc()).all()
+        urls = [
+            {"comment": i.comment, "url": i.url, "updated_at": i.updated_at}
+            for i in s.query(URLShare).order_by(URLShare.id.desc()).all()
+        ]
         return jsonify({"urls": urls})
 
 
